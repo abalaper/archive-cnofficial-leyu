@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>九游app · 专题介绍</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #eef2f5;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #1e2a3a;
+    }
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+
+    /* —— 深色头图 hero —— */
+    .hero {
+      background: linear-gradient(145deg, #0b1622 0%, #1b2a3f 100%);
+      color: #eceff4;
+      padding: 64px 32px 56px;
+      border-radius: 28px;
+      margin: 40px 0 32px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -60px; top: -80px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(255,183,77,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(4px);
+      padding: 6px 18px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255,255,255,0.12);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      max-width: 700px;
+      font-size: 1.1rem;
+      color: #c8d2de;
+      margin-bottom: 28px;
+    }
+    .hero-link {
+      display: inline-block;
+      background: #f5a623;
+      color: #0b1622;
+      padding: 14px 32px;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.05rem;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 4px 12px rgba(245,166,35,0.25);
+    }
+    .hero-link:hover {
+      background: #ffb84d;
+      transform: scale(1.02);
+    }
+
+    /* —— 浅色正文区 —— */
+    .content-block {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px 36px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+    .content-block h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      border-left: 5px solid #f5a623;
+      padding-left: 18px;
+      color: #0f1c2e;
+    }
+    .content-block h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin: 28px 0 12px;
+      color: #2a3f56;
+    }
+    .content-block p {
+      margin-bottom: 18px;
+      color: #2d3e52;
+    }
+    .content-block a {
+      color: #c07d1a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 0.08em;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .content-block a:hover {
+      color: #e09e30;
+    }
+
+    .two-column {
+      display: flex;
+      gap: 28px;
+      margin: 20px 0;
+    }
+    .two-column > div {
+      flex: 1;
+      background: #f7f9fc;
+      padding: 20px 22px;
+      border-radius: 20px;
+      border: 1px solid #e6ecf3;
+    }
+    .two-column h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1b2a3f;
+    }
+    .two-column p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .faq-mini {
+      margin-top: 20px;
+      background: #f3f6fa;
+      border-radius: 18px;
+      padding: 24px 28px;
+    }
+    .faq-mini dt {
+      font-weight: 600;
+      margin: 12px 0 4px;
+      color: #1b2a3f;
+    }
+    .faq-mini dd {
+      margin-left: 0;
+      color: #3a4b60;
+    }
+
+    .footnote {
+      text-align: center;
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      padding: 28px 24px;
+      border-radius: 24px;
+      margin-top: 12px;
+      border: 1px solid #dce4ed;
+    }
+    .footnote p {
+      font-size: 0.95rem;
+      color: #3c4f63;
+    }
+    .footnote .final-link {
+      background: #1b2a3f;
+      color: #f0f3f7;
+      padding: 10px 28px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 16px;
+      transition: background 0.2s;
+    }
+    .footnote .final-link:hover {
+      background: #2a405a;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 40px 20px 36px; }
+      .content-block { padding: 28px 20px; }
+      .two-column { flex-direction: column; gap: 16px; }
+      .page { padding: 0 16px 32px; }
+    }
+    @media (max-width: 440px) {
+      .hero-link { display: block; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 深色头图 hero -->
+  <header class="hero">
+    <div class="hero-badge">📖 专题 · 平台简述</div>
+    <h1>九游app：移动端<br>综合服务聚合</h1>
+    <p>从工具化体验到内容生态，一个站点如何串联起多种使用场景。本文从定位、可信度及功能逻辑出发，梳理其设计思路。</p>
+    <a href="https://new-9yapp.com" class="hero-link">九游app</a>
+  </header>
+
+  <!-- 介绍块1：背景说明与站点定位 -->
+  <div class="content-block">
+    <h2>从何而来：服务背景与定位</h2>
+    <p>在移动应用日益分化的环境下，用户往往需要多个平台才能满足日常资讯、娱乐或实用工具需求。<a href="https://new-9yapp.com">九游app</a> 的出发点是以一个聚合型站点，提供相对集中的信息入口与功能指引。其并非单一应用下载站，而更接近一个导航型平台——整理资源、分类展示，让使用者可以快速了解不同服务的特性。这种模式在一定程度上降低了信息筛选成本，尤其适合对效率有要求的用户。</p>
+    <p>从架构上看，站点保持了较为克制的界面逻辑，避免过度堆砌。首页以模块化方式呈现内容，重点突出分类与直达，而非复杂推荐算法。对于希望直接获取信息而非被算法支配的访问者而言，这种设计提供了一种可预期的浏览路径。</p>
+  </div>
+
+  <!-- 介绍块2：可信说明与运行逻辑 -->
+  <div class="content-block">
+    <h2>可信度视角：透明度与更新机制</h2>
+    <p>任何一个提供外部链接或资源索引的平台，客观性都是用户关心的核心。九游app 在内容组织上并未采用夸大描述，而是以简洁标题配合简要介绍，让用户自行判断。同时，站内更新日志与版本说明可见，体现了基础的信息透明度。</p>
+    
+    <div class="two-column">
+      <div>
+        <h4>🔍 索引结构</h4>
+        <p>分类基于使用场景（工具、资讯、社区、娱乐），每个条目带有简短说明，无隐藏跳转或诱导点击。链接直接导向目标服务。</p>
+      </div>
+      <div>
+        <h4>📅 维护频率</h4>
+        <p>根据公开记录，该站点保持每月至少两次内容刷新，失效链接会在下一轮更新中修正或移除，减少死链带来的困扰。</p>
+      </div>
+    </div>
+
+    <p>此外，页面底部保留了联系渠道与反馈入口，这对于一个非商业化的信息聚合页面来说，是建立可信度的重要环节。使用者若发现异常条目，可通过指定方式提交，维护团队会在一周内确认处理。</p>
+  </div>
+
+  <!-- 介绍块3：自然介绍 + 适用场景 -->
+  <div class="content-block">
+    <h2>日常使用场景：从快速查找至横向对比</h2>
+    <p>假设你正在寻找某个特定类型的移动资源——例如词典工具、行业资讯或轻量社区——<a href="https://new-9yapp.com">九游app</a> 的分类列表可以提供一个起点。它不替代深度搜索，但胜在整理后的横向对比：多个同类服务并列展示，简介与特点一目了然。这种方式在以下情形中尤为实用：</p>
+    <ul style="margin: 16px 0 18px 24px; color: #2d3e52;">
+      <li>刚接触某一领域，需要了解有哪些主流选项；</li>
+      <li>想替换现有工具，想快速浏览替代品的核心差异；</li>
+      <li>需要获取非热门但实用的垂直类服务索引。</li>
+    </ul>
+    <p>值得一提的是，站内未植入竞价排名或付费置顶标识，所有条目均按照类别与实用性进行排序，这在一定程度上保证了推荐的中立性。当然，最终选择依然取决于个人偏好与实际体验。</p>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <h3 style="border-left: 0; padding-left: 0; margin-top: 0;">常见问题摘要</h3>
+      <dl>
+        <dt>❓ 九游app 是否需要注册才能使用？</dt>
+        <dd>不需要。站点本身为公开索引页，浏览所有分类与链接均无需登录。部分目标服务可能要求注册，但本站不收集任何用户信息。</dd>
+        <dt>❓ 链接失效了怎么办？</dt>
+        <dd>可以通过页面底部的反馈渠道提交失效链接，通常下一轮更新时会被替换或移除。建议同时自行搜索目标服务的最新地址。</dd>
+        <dt>❓ 内容是否包含广告或推广标识？</dt>
+        <dd>目前站内没有植入商业广告或付费推广条目。所有列出的服务均基于客观分类与功能描述呈现。</dd>
+      </dl>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 (链接嵌入句子) -->
+  <div class="footnote">
+    <p>以上内容围绕站点背景、可信度及日常使用场景展开。若您希望直接浏览分类索引，可访问 <a href="https://new-9yapp.com" style="text-decoration: underline; font-weight: 600;">九游app</a> 查看完整列表。该页面保持每月更新，建议收藏以备后续查询。</p>
+    <a href="https://new-9yapp.com" class="final-link">九游app</a>
+    <p style="margin-top: 18px; font-size: 0.85rem; color: #6f7f8f;">—— 保持信息简洁，选择留给使用者 ——</p>
+  </div>
+
+</div>
+</body>
+</html>
